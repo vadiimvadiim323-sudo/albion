@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsProject1.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="desktop_srv_cache.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="pipeline_wait.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WindowsProject1.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WindowsProject1.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="WindowsProject1.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Modules\app" />
+    <Filter Include="Modules\capture" />
+    <Filter Include="Modules\config" />
+    <Filter Include="Modules\core" />
+    <Filter Include="Modules\diagnostics" />
+    <Filter Include="Modules\inference" />
+    <Filter Include="Modules\models" />
+    <Filter Include="Modules\pipeline" />
+    <Filter Include="Modules\services" />
+    <Filter Include="Modules\tracking" />
+    <Filter Include="Modules\ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="modules\inference\detector.cpp"><Filter>Modules\inference</Filter></ClCompile>
+    <ClCompile Include="modules\app\lifecycle.cpp"><Filter>Modules\app</Filter></ClCompile>
+    <ClCompile Include="modules\app\commands.cpp"><Filter>Modules\app</Filter></ClCompile>
+    <ClCompile Include="modules\diagnostics\diagnostics.cpp"><Filter>Modules\diagnostics</Filter></ClCompile>
+    <ClCompile Include="modules\config\configuration.cpp"><Filter>Modules\config</Filter></ClCompile>
+    <ClCompile Include="modules\ui\controls.cpp"><Filter>Modules\ui</Filter></ClCompile>
+    <ClCompile Include="modules\ui\overlay.cpp"><Filter>Modules\ui</Filter></ClCompile>
+    <ClCompile Include="modules\capture\capture.cpp"><Filter>Modules\capture</Filter></ClCompile>
+    <ClCompile Include="modules\ui\drawing.cpp"><Filter>Modules\ui</Filter></ClCompile>
+    <ClCompile Include="modules\models\models.cpp"><Filter>Modules\models</Filter></ClCompile>
+    <ClCompile Include="modules\pipeline\pipeline.cpp"><Filter>Modules\pipeline</Filter></ClCompile>
+    <ClCompile Include="modules\ui\window.cpp"><Filter>Modules\ui</Filter></ClCompile>
+    <ClCompile Include="modules\tracking\tracking.cpp"><Filter>Modules\tracking</Filter></ClCompile>
+    <ClInclude Include="modules\core\platform.hpp"><Filter>Modules\core</Filter></ClInclude>
+    <ClInclude Include="modules\core\runtime.hpp"><Filter>Modules\core</Filter></ClInclude>
+    <ClInclude Include="modules\core\utilities.hpp"><Filter>Modules\core</Filter></ClInclude>
+    <ClInclude Include="modules\core\clock.hpp"><Filter>Modules\core</Filter></ClInclude>
+    <ClInclude Include="modules\core\detection.hpp"><Filter>Modules\core</Filter></ClInclude>
+    <ClInclude Include="modules\core\timing.hpp"><Filter>Modules\core</Filter></ClInclude>
+    <ClInclude Include="modules\ui\strings.hpp"><Filter>Modules\ui</Filter></ClInclude>
+    <ClInclude Include="modules\ui\theme.hpp"><Filter>Modules\ui</Filter></ClInclude>
+    <ClInclude Include="modules\services\discord.hpp"><Filter>Modules\services</Filter></ClInclude>
+    <ClInclude Include="modules\services\gpu_metrics.hpp"><Filter>Modules\services</Filter></ClInclude>
+    <ClInclude Include="modules\pipeline\frame_mailbox.hpp"><Filter>Modules\pipeline</Filter></ClInclude>
+    <ClInclude Include="modules\inference\detector.hpp"><Filter>Modules\inference</Filter></ClInclude>
+    <ClInclude Include="modules\app\app.hpp"><Filter>Modules\app</Filter></ClInclude>
+  </ItemGroup>
+</Project>

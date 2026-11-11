@@ -1,0 +1,16 @@
+@echo off
+setlocal
+cd /d "%~dp0"
+set "ALBION_WGC=0"
+set "ALBION_GPU_TIMING=0"
+set "ALBION_IO_GRAPH=0"
+set "ALBION_CUDA_POLL=0"
+set "ALBION_COPY_OUTPUT=0"
+set "ALBION_OUTPUT_GRAPH=0"
+set "ALBION_LEGACY_WAIT=0"
+set "ALBION_PERF_LOG_MS=0"
+set "ALBION_DISABLE_INTEROP=1"
+set "APP=%~dp0WindowsProject1.exe"
+if not exist "%APP%" set "APP=%~dp0WindowsProject1\x64\Release\WindowsProject1.exe"
+if not exist "%APP%" set "APP=%~dp0albion-ui-centered.exe"
+start "" "%APP%"

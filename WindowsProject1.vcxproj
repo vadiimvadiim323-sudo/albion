@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{72e995f6-9163-40f1-b280-8f2bf296b316}</ProjectGuid>
+    <RootNamespace>WindowsProject1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <TensorRTRoot Condition="'$(TensorRTRoot)'==''">C:\TensorRT-10.11.0.33</TensorRTRoot>
+    <AlbionCudaRoot Condition="'$(AlbionCudaRoot)'==''">C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8</AlbionCudaRoot>
+    <AlbionOrtRoot Condition="'$(AlbionOrtRoot)'==''">$(ProjectDir)..\vendor\ort-directml-1.24.4</AlbionOrtRoot>
+    <AlbionDirectMLRoot Condition="'$(AlbionDirectMLRoot)'==''">$(ProjectDir)..\vendor\directml-1.15.4</AlbionDirectMLRoot>
+    <AlbionOnnxRuntime Condition="'$(AlbionOnnxRuntime)'==''">true</AlbionOnnxRuntime>
+    <AlbionOrtDefine Condition="'$(AlbionOnnxRuntime)'=='true'">AIM_ENABLE_ORT;AIM_ENABLE_DML;</AlbionOrtDefine>
+    <AlbionTensorRT Condition="'$(AlbionTensorRT)'==''">true</AlbionTensorRT>
+    <AlbionTrtDefine Condition="'$(AlbionTensorRT)'=='true'">AIM_ENABLE_TRT;</AlbionTrtDefine>
+    <AlbionWgc Condition="'$(AlbionWgc)'==''">false</AlbionWgc>
+    <AlbionWgcDefine Condition="'$(AlbionWgc)'=='true'">AIM_ENABLE_WGC;</AlbionWgcDefine>
+    <AlbionD3DInterop Condition="'$(AlbionD3DInterop)'==''">true</AlbionD3DInterop>
+    <AlbionInteropDefine Condition="'$(AlbionD3DInterop)'=='true'">AIM_ENABLE_D3D_INTEROP;</AlbionInteropDefine>
+    <AlbionReversalDefine Condition="'$(AlbionDisableReversalGuard)'=='true'">ALBION_DISABLE_REVERSAL_GUARD;</AlbionReversalDefine>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_ITERATOR_DEBUG_LEVEL=0;_WINDOWS;$(AlbionOrtDefine)$(AlbionTrtDefine)$(AlbionWgcDefine)$(AlbionInteropDefine)$(AlbionReversalDefine)%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(AlbionOrtRoot)\build\native\include;$(AlbionDirectMLRoot)\include;$(ProjectDir);$(TensorRTRoot)\include;$(AlbionCudaRoot)\include;$(ProjectDir)..\vendor\keyauth;$(ProjectDir)..\vendor\keyauth\nlohmann;$(ProjectDir)..\vendor\keyauth\libsodium;$(ProjectDir)..\vendor\keyauth\curl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>library_x64.lib;libcurl.lib;libsodium.lib;zlib.lib;winhttp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(AlbionOrtRoot)\runtimes\win-x64\native;$(TensorRTRoot)\lib;$(AlbionCudaRoot)\lib\x64;$(ProjectDir)keyauth-lib\$(Configuration);$(ProjectDir)..\vendor\keyauth\curl;$(ProjectDir)..\vendor\keyauth\libsodium;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_ITERATOR_DEBUG_LEVEL=0;_WINDOWS;$(AlbionOrtDefine)$(AlbionTrtDefine)$(AlbionWgcDefine)$(AlbionInteropDefine)$(AlbionReversalDefine)%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(AlbionOrtRoot)\build\native\include;$(AlbionDirectMLRoot)\include;$(ProjectDir);$(TensorRTRoot)\include;$(AlbionCudaRoot)\include;$(ProjectDir)..\vendor\keyauth;$(ProjectDir)..\vendor\keyauth\nlohmann;$(ProjectDir)..\vendor\keyauth\libsodium;$(ProjectDir)..\vendor\keyauth\curl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>library_x64.lib;libcurl.lib;libsodium.lib;zlib.lib;winhttp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(AlbionOrtRoot)\runtimes\win-x64\native;$(TensorRTRoot)\lib;$(AlbionCudaRoot)\lib\x64;$(ProjectDir)keyauth-lib\$(Configuration);$(ProjectDir)..\vendor\keyauth\curl;$(ProjectDir)..\vendor\keyauth\libsodium;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="modules\core\platform.hpp" />
+    <ClInclude Include="modules\core\runtime.hpp" />
+    <ClInclude Include="modules\core\utilities.hpp" />
+    <ClInclude Include="modules\core\clock.hpp" />
+    <ClInclude Include="modules\core\detection.hpp" />
+    <ClInclude Include="modules\core\timing.hpp" />
+    <ClInclude Include="modules\ui\strings.hpp" />
+    <ClInclude Include="modules\ui\theme.hpp" />
+    <ClInclude Include="modules\services\discord.hpp" />
+    <ClInclude Include="modules\services\gpu_metrics.hpp" />
+    <ClInclude Include="modules\pipeline\frame_mailbox.hpp" />
+    <ClInclude Include="modules\inference\detector.hpp" />
+    <ClInclude Include="modules\app\app.hpp" />
+    <ClInclude Include="config_document.hpp" />
+    <ClInclude Include="app_paths.hpp" />
+    <ClInclude Include="atomic_file.hpp" />
+    <ClInclude Include="win32_overlapped_io.hpp" />
+    <ClInclude Include="worker_guard.hpp" />
+    <ClInclude Include="license_cache.hpp" />
+    <ClInclude Include="async_tasks.hpp" />
+    <ClInclude Include="config_repository.hpp" />
+    <ClInclude Include="bounded_log.hpp" />
+    <ClInclude Include="diagnostics_panel.hpp" />
+
+    <ClInclude Include="gpu_infer.hpp" />
+    <ClInclude Include="gpu_preprocessor.hpp" />
+    <ClInclude Include="performance_panel.hpp" />
+    <ClInclude Include="performance_stats.hpp" />
+    <ClInclude Include="desktop_srv_cache.hpp" />
+    <ClInclude Include="pipeline_wait.hpp" />
+    <ClInclude Include="basic_winapi_aim.hpp" />
+    <ClInclude Include="arduino_hid.hpp" />
+    <ClInclude Include="ui_fonts.hpp" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="WindowsProject1.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WindowsProject1.cpp" />
+    <ClCompile Include="modules\inference\detector.cpp" />
+    <ClCompile Include="modules\app\lifecycle.cpp" />
+    <ClCompile Include="modules\app\commands.cpp" />
+    <ClCompile Include="modules\diagnostics\diagnostics.cpp" />
+    <ClCompile Include="modules\config\configuration.cpp" />
+    <ClCompile Include="modules\ui\controls.cpp" />
+    <ClCompile Include="modules\ui\overlay.cpp" />
+    <ClCompile Include="modules\capture\capture.cpp" />
+    <ClCompile Include="modules\ui\drawing.cpp" />
+    <ClCompile Include="modules\models\models.cpp" />
+    <ClCompile Include="modules\pipeline\pipeline.cpp" />
+    <ClCompile Include="modules\ui\window.cpp" />
+    <ClCompile Include="modules\tracking\tracking.cpp" />
+    <ClCompile Include="auth_gate.cpp" />
+    <ClCompile Include="startup_splash.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WindowsProject1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico" />
+    <Image Include="WindowsProject1.ico" />
+  </ItemGroup>
+  <!-- FIX-V11-14: NVIDIA runtime imports are optional; WinML has its own build mode. -->
+  <ItemDefinitionGroup Condition="'$(Platform)'=='x64' and '$(AlbionTensorRT)'=='true'">
+    <Link>
+      <AdditionalDependencies>delayimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>nvinfer_10.dll;cudart64_110.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+    </Link>
+  </ItemDefinitionGroup>
+  <Target Name="ValidateAlbionBuild" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(Platform)'!='x64'" Text="This package supports x64 only; supplied dependencies are not x86." />
+    <Error Condition="'$(AlbionD3DInterop)'=='true' and '$(AlbionTensorRT)'!='true'" Text="D3D interop requires the TensorRT build." />
+    <Error Condition="'$(AlbionTensorRT)'=='true' and !Exists('$(TensorRTRoot)\include\NvInfer.h')" Text="TensorRT SDK not found. Set TensorRTRoot or use build.bat false winml." />
+    <Error Condition="'$(AlbionTensorRT)'=='true' and !Exists('$(AlbionCudaRoot)\include\cuda_runtime_api.h')" Text="CUDA SDK not found. Set AlbionCudaRoot or use the WinML build." />
+  </Target>
+  <Target Name="CopyAlbionRuntimeAssets" AfterTargets="Build" Condition="'$(AlbionCopyRuntimeAssets)'!='false'">
+    <ItemGroup>
+      <AlbionTools Include="$(ProjectDir)..\tools\diagnostics.py;$(ProjectDir)..\tools\offline_model_check.py" />
+      <AlbionRuntimeDll Include="$(TensorRTRoot)\lib\nvinfer_10.dll;$(AlbionCudaRoot)\bin\cudart64_110.dll" Condition="'$(AlbionTensorRT)'=='true'" />
+    </ItemGroup>
+    <Copy SourceFiles="@(AlbionTools)" DestinationFolder="$(TargetDir)tools" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(AlbionRuntimeDll)" DestinationFolder="$(TargetDir)" SkipUnchangedFiles="true" Condition="'@(AlbionRuntimeDll)'!=''" />
+  </Target>
+  <Target Name="ValidateAlbionOrt" BeforeTargets="PrepareForBuild" Condition="'$(AlbionOnnxRuntime)'=='true'">
+    <Error Condition="!Exists('$(AlbionOrtRoot)\build\native\include\onnxruntime_cxx_api.h')" Text="Bundled ONNX Runtime SDK missing." />
+    <Error Condition="!Exists('$(AlbionDirectMLRoot)\bin\x64-win\DirectML.dll')" Text="Bundled DirectML runtime missing." />
+  </Target>
+  <Target Name="CopyAlbionOrt" AfterTargets="Build" Condition="'$(AlbionOnnxRuntime)'=='true'">
+    <ItemGroup>
+      <AlbionOrtDll Include="$(AlbionOrtRoot)\runtimes\win-x64\native\onnxruntime.dll;$(AlbionOrtRoot)\runtimes\win-x64\native\onnxruntime_providers_shared.dll;$(AlbionDirectMLRoot)\bin\x64-win\DirectML.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(AlbionOrtDll)" DestinationFolder="$(TargetDir)" SkipUnchangedFiles="true" />
+  </Target>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <ClInclude Include="model_contract.hpp" />
+    <ClInclude Include="latest_frame.hpp" />
+    <ClInclude Include="wgc_capture.hpp" />
+  </ItemGroup>
+</Project>
